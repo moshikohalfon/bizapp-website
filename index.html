@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="BizApps — powerful, easy-to-use business tools. GreenLight expense approvals and more.">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net data:; script-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'none'">
   <title>BizApps — Business Tools That Work</title>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -449,7 +452,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">
+    <a href="/" class="nav-logo">
       <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="160" height="160" rx="28" fill="#1e293b"/>
         <text x="80" y="36" font-family="Manrope,sans-serif" font-size="22" font-weight="800" fill="white" text-anchor="middle" letter-spacing="-0.5">Biz</text>
@@ -792,27 +795,27 @@
 
       <!-- Step navigation -->
       <div class="tour-nav" id="tourNav">
-        <button class="tour-step active" onclick="tourGo(0)">
+        <button class="tour-step active" data-step="0">
           <div class="tour-num" id="tn0">1</div>
           <div><div class="tour-step-label">Create Report</div><div class="tour-step-sub">Employee fills in a new expense report</div></div>
           <div class="tour-progress" id="tp0"></div>
         </button>
-        <button class="tour-step" onclick="tourGo(1)">
+        <button class="tour-step" data-step="1">
           <div class="tour-num" id="tn1">2</div>
           <div><div class="tour-step-label">Add Expenses</div><div class="tour-step-sub">Line items with receipts &amp; amounts</div></div>
           <div class="tour-progress" id="tp1"></div>
         </button>
-        <button class="tour-step" onclick="tourGo(2)">
+        <button class="tour-step" data-step="2">
           <div class="tour-num" id="tn2">3</div>
           <div><div class="tour-step-label">Submit for Review</div><div class="tour-step-sub">Sent to T&amp;E team for approval</div></div>
           <div class="tour-progress" id="tp2"></div>
         </button>
-        <button class="tour-step" onclick="tourGo(3)">
+        <button class="tour-step" data-step="3">
           <div class="tour-num" id="tn3">4</div>
           <div><div class="tour-step-label">T&amp;E Approves</div><div class="tour-step-sub">Policy compliance check</div></div>
           <div class="tour-progress" id="tp3"></div>
         </button>
-        <button class="tour-step" onclick="tourGo(4)">
+        <button class="tour-step" data-step="4">
           <div class="tour-num" id="tn4">5</div>
           <div><div class="tour-step-label">Finance Approves</div><div class="tour-step-sub">Green light — ready for payment</div></div>
           <div class="tour-progress" id="tp4"></div>
@@ -1056,7 +1059,9 @@
     <div class="footer-copy">&copy; 2026 BizApps. All rights reserved.</div>
     <ul class="footer-links">
       <li><a href="#products">Products</a></li>
+      <li><a href="#tour">Tour</a></li>
       <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="https://app.bizapps.app/login">Sign In</a></li>
     </ul>
   </div>
@@ -1065,25 +1070,21 @@
 <script>
   (function () {
     var STEPS = 5;
-    var DURATION = 4800; // ms per step
+    var DURATION = 4800;
     var current = 0;
-    var intervalId = null;
     var startTs = null;
     var rafId = null;
 
     function getBtn(i)   { return document.querySelectorAll('.tour-step')[i]; }
     function getFrame(i) { return document.getElementById('mf' + i); }
     function getBar(i)   { return document.getElementById('tp' + i); }
-    function getNum(i)   { return document.getElementById('tn' + i); }
 
     function tourGo(n) {
-      // Exit current frame
       var oldFrame = getFrame(current);
       oldFrame.classList.remove('active');
       oldFrame.classList.add('exit');
       setTimeout(function() { oldFrame.classList.remove('exit'); }, 300);
 
-      // Update step buttons
       for (var i = 0; i < STEPS; i++) {
         var btn = getBtn(i);
         btn.classList.remove('active', 'done');
@@ -1092,11 +1093,9 @@
       }
       getBtn(n).classList.add('active');
 
-      // Activate new frame
       current = n;
       getFrame(n).classList.add('active');
 
-      // Restart progress bar animation
       cancelAnimationFrame(rafId);
       startTs = null;
       animateBar(n);
@@ -1116,22 +1115,19 @@
       });
     }
 
-    // Expose globally for onclick handlers
-    window.tourGo = tourGo;
+    // Wire up step buttons via event delegation (no global scope leak)
+    document.getElementById('tourNav').addEventListener('click', function(e) {
+      var btn = e.target.closest('[data-step]');
+      if (btn) tourGo(parseInt(btn.dataset.step, 10));
+    });
 
     // Pause on hover
     var browser = document.querySelector('.mock-browser');
     if (browser) {
-      browser.addEventListener('mouseenter', function() {
-        cancelAnimationFrame(rafId);
-      });
-      browser.addEventListener('mouseleave', function() {
-        startTs = null;
-        animateBar(current);
-      });
+      browser.addEventListener('mouseenter', function() { cancelAnimationFrame(rafId); });
+      browser.addEventListener('mouseleave', function() { startTs = null; animateBar(current); });
     }
 
-    // Kick off
     tourGo(0);
   })();
 </script>
