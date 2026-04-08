@@ -466,6 +466,7 @@
       <li><a href="#products">Products</a></li>
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#tour">Product Tour</a></li>
       <li><a href="https://app.bizapps.app/login" class="nav-cta">Sign In</a></li>
     </ul>
   </div>
@@ -561,6 +562,382 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<!-- PRODUCT TOUR -->
+<style>
+  /* ── TOUR ── */
+  .tour-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 36px;
+    margin-top: 56px;
+    align-items: start;
+  }
+  .tour-nav { display: flex; flex-direction: column; gap: 4px; }
+  .tour-step {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 13px 14px;
+    border-radius: 10px; border: none; background: transparent;
+    cursor: pointer; text-align: left; width: 100%;
+    position: relative; overflow: hidden;
+    transition: background .2s;
+  }
+  .tour-step:hover { background: #f3f4f6; }
+  .tour-step.active { background: rgba(2,67,172,.07); }
+  .tour-num {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: #e5e7eb; color: #9ca3af;
+    font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; transition: background .2s, color .2s;
+  }
+  .tour-step.active .tour-num { background: #0243ac; color: #fff; }
+  .tour-step.done .tour-num { background: #22c55e; color: #fff; }
+  .tour-step-label { font-size: 13px; font-weight: 700; color: #010a34; margin-bottom: 2px; }
+  .tour-step-sub { font-size: 11px; color: #6b7280; line-height: 1.4; }
+  .tour-progress {
+    position: absolute; bottom: 0; left: 0;
+    height: 3px; width: 0%; background: #0243ac;
+    transition: none;
+  }
+
+  /* ── MOCK BROWSER ── */
+  .mock-browser {
+    border: 1px solid #dde1e7; border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(1,10,52,.1), 0 2px 8px rgba(1,10,52,.06);
+  }
+  .mock-chrome {
+    background: #f1f3f4; border-bottom: 1px solid #dde1e7;
+    padding: 9px 14px; display: flex; align-items: center; gap: 10px;
+  }
+  .mock-dots { display: flex; gap: 5px; }
+  .mock-dot { width: 9px; height: 9px; border-radius: 50%; }
+  .mock-dot:nth-child(1) { background: #ff5f57; }
+  .mock-dot:nth-child(2) { background: #ffbd2e; }
+  .mock-dot:nth-child(3) { background: #27c93f; }
+  .mock-url-bar {
+    background: #fff; border: 1px solid #dde1e7; border-radius: 5px;
+    padding: 3px 10px; font-size: 11px; color: #555;
+    display: flex; align-items: center; gap: 5px; max-width: 260px;
+  }
+  .mock-app-body { display: flex; height: 390px; }
+
+  /* ── MOCK SIDEBAR ── */
+  .mock-sidebar {
+    width: 110px; background: #010a34; flex-shrink: 0;
+    padding: 0; display: flex; flex-direction: column;
+  }
+  .mock-sidebar-logo {
+    display: flex; align-items: center; gap: 6px;
+    padding: 11px 9px 11px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    margin-bottom: 6px;
+  }
+  .mock-sidebar-logo span { font-size: 10px; font-weight: 800; color: #fff; }
+  .mock-side-link {
+    display: flex; align-items: center; gap: 6px;
+    padding: 7px 9px; font-size: 10px; font-weight: 600;
+    color: rgba(255,255,255,.4); cursor: default;
+  }
+  .mock-side-link.active { color: #fff; background: rgba(255,255,255,.08); }
+  .mock-side-link i { font-size: 11px; }
+
+  /* ── MOCK CONTENT FRAMES ── */
+  .mock-content { flex: 1; padding: 16px; position: relative; background: #f0f2f5; overflow: hidden; }
+  .mock-frame {
+    position: absolute; inset: 16px;
+    opacity: 0; transform: translateX(18px);
+    transition: opacity .35s ease, transform .35s ease;
+    pointer-events: none;
+  }
+  .mock-frame.active { opacity: 1; transform: translateX(0); pointer-events: auto; }
+  .mock-frame.exit { opacity: 0; transform: translateX(-18px); transition: opacity .2s ease, transform .2s ease; }
+
+  /* ── FRAME ELEMENTS ── */
+  .mf-title { font-size: 13px; font-weight: 800; color: #010a34; margin-bottom: 12px; letter-spacing: -.01em; }
+  .mf-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px; }
+  .mf-card { background: #fff; border: 1px solid #e4e4e4; border-radius: 10px; padding: 14px; }
+  .mf-field { margin-bottom: 10px; }
+  .mf-label { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: #9ca3af; margin-bottom: 3px; }
+  .mf-input {
+    border: 1.5px solid #e4e4e4; border-radius: 6px;
+    padding: 6px 9px; font-size: 11px; color: #010a34;
+    font-family: 'Manrope', sans-serif; background: #fff;
+    display: flex; align-items: center; gap: 1px;
+    min-height: 28px;
+  }
+  .mf-input.pre { color: #010a34; }
+  .type-anim { overflow: hidden; white-space: nowrap; width: 0; animation: none; }
+  .mock-frame.active .type-anim { animation: typeOut .9s steps(16, end) .2s forwards; }
+  .cursor-blink { animation: blink .6s steps(1) infinite; font-weight: 300; color: #0243ac; }
+  @keyframes typeOut { from { width: 0; } to { width: 100%; } }
+  @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0; } }
+  .mf-btn-row { margin-top: 14px; }
+  .mf-btn {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: #0243ac; color: #fff; border: none;
+    border-radius: 6px; padding: 7px 12px;
+    font-size: 10px; font-weight: 700; cursor: default;
+    font-family: 'Manrope', sans-serif;
+  }
+  .mf-btn.small { padding: 5px 9px; font-size: 9px; }
+  .mf-btn.green { background: #22c55e; }
+
+  /* badges */
+  .mf-badge {
+    display: inline-flex; align-items: center;
+    padding: 2px 8px; border-radius: 20px;
+    font-size: 9px; font-weight: 700;
+    letter-spacing: .05em; text-transform: uppercase;
+  }
+  .mf-badge.draft    { background: #f1f5f9; color: #64748b; }
+  .mf-badge.submitted { background: #fef3c7; color: #b45309; }
+  .mf-badge.te       { background: #e0f2fe; color: #0369a1; }
+  .mf-badge.approved { background: #dcfce7; color: #15803d; }
+
+  /* table */
+  .mf-table { background: #fff; border: 1px solid #e4e4e4; border-radius: 8px; overflow: hidden; }
+  .mf-thead {
+    display: grid; grid-template-columns: 1fr 52px 58px 24px;
+    padding: 5px 10px; background: #f8fafc;
+    border-bottom: 1px solid #e4e4e4;
+    font-size: 9px; font-weight: 700;
+    text-transform: uppercase; color: #9ca3af; letter-spacing: .06em;
+  }
+  .mf-thead.t3 { grid-template-columns: 1fr 52px 62px; }
+  .mf-row {
+    display: grid; grid-template-columns: 1fr 52px 58px 24px;
+    padding: 6px 10px; border-bottom: 1px solid #f1f5f9;
+    font-size: 10px; align-items: center;
+    opacity: 0;
+  }
+  .mf-row.t3 { grid-template-columns: 1fr 52px 62px; opacity: 1; }
+  .mf-row:last-child { border-bottom: none; }
+  .mf-amt { font-weight: 700; color: #010a34; }
+  .mock-frame.active .mf-row.r1 { animation: rowIn .3s .05s both; }
+  .mock-frame.active .mf-row.r2 { animation: rowIn .3s .25s both; }
+  .mock-frame.active .mf-row.r3 { animation: rowIn .3s .45s both; }
+  @keyframes rowIn { from { opacity:0; transform:translateY(5px); } to { opacity:1; transform:translateY(0); } }
+
+  .mf-total { text-align: right; font-size: 10px; color: #6b7280; margin-top: 7px; padding-right: 4px; }
+  .mf-total strong { color: #010a34; }
+
+  /* alert */
+  .mf-alert {
+    border-radius: 7px; padding: 7px 10px;
+    font-size: 10px; font-weight: 600;
+    display: flex; align-items: center; gap: 6px;
+    margin-bottom: 10px;
+  }
+  .mf-alert.success { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
+  .mf-alert.info    { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+  /* reviewer bar */
+  .mf-reviewer {
+    background: #fff; border: 1px solid #e4e4e4; border-radius: 8px;
+    padding: 9px 11px; display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 10px;
+  }
+  .mf-reviewer-info { display: flex; align-items: center; gap: 8px; }
+  .mf-avatar {
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 800; color: #fff; flex-shrink: 0;
+  }
+  .mf-avatar.purple { background: #7c3aed; }
+  .mf-avatar.blue   { background: #0243ac; }
+  .mf-reviewer-name { font-size: 10px; font-weight: 700; color: #010a34; }
+  .mf-reviewer-note { font-size: 9px; color: #6b7280; margin-top: 1px; }
+
+  /* success screen */
+  .mf-success {
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; height: 100%; text-align: center;
+    gap: 4px;
+  }
+  .mf-check {
+    width: 54px; height: 54px; background: #22c55e; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; color: #fff; margin-bottom: 10px;
+  }
+  .mock-frame.active .mf-check { animation: popIn .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes popIn { from { transform:scale(0); opacity:0; } to { transform:scale(1); opacity:1; } }
+  .mf-success-title { font-size: 15px; font-weight: 800; color: #010a34; margin-bottom: 2px; }
+  .mf-success-sub   { font-size: 11px; color: #6b7280; margin-bottom: 8px; }
+  .mf-success-quote { font-size: 10px; color: #6b7280; font-style: italic; margin-top: 8px; max-width: 220px; }
+
+  @media (max-width: 820px) {
+    .tour-layout { grid-template-columns: 1fr; }
+    .tour-nav { flex-direction: row; overflow-x: auto; gap: 8px; padding-bottom: 4px; }
+    .tour-step { min-width: 130px; }
+    .tour-step-sub { display: none; }
+    .mock-app-body { height: 340px; }
+  }
+  @media (max-width: 480px) {
+    .mock-sidebar { display: none; }
+    .mock-app-body { height: 320px; }
+  }
+</style>
+
+<section id="tour" style="background:#f8fafc;padding:96px 32px">
+  <div class="section-inner">
+    <div class="section-label">GreenLight — Product Tour</div>
+    <div class="section-title">See the approval flow live</div>
+    <div class="section-sub">Watch the full expense workflow — from creation to payment in 5 steps.</div>
+
+    <div class="tour-layout">
+
+      <!-- Step navigation -->
+      <div class="tour-nav" id="tourNav">
+        <button class="tour-step active" onclick="tourGo(0)">
+          <div class="tour-num" id="tn0">1</div>
+          <div><div class="tour-step-label">Create Report</div><div class="tour-step-sub">Employee fills in a new expense report</div></div>
+          <div class="tour-progress" id="tp0"></div>
+        </button>
+        <button class="tour-step" onclick="tourGo(1)">
+          <div class="tour-num" id="tn1">2</div>
+          <div><div class="tour-step-label">Add Expenses</div><div class="tour-step-sub">Line items with receipts &amp; amounts</div></div>
+          <div class="tour-progress" id="tp1"></div>
+        </button>
+        <button class="tour-step" onclick="tourGo(2)">
+          <div class="tour-num" id="tn2">3</div>
+          <div><div class="tour-step-label">Submit for Review</div><div class="tour-step-sub">Sent to T&amp;E team for approval</div></div>
+          <div class="tour-progress" id="tp2"></div>
+        </button>
+        <button class="tour-step" onclick="tourGo(3)">
+          <div class="tour-num" id="tn3">4</div>
+          <div><div class="tour-step-label">T&amp;E Approves</div><div class="tour-step-sub">Policy compliance check</div></div>
+          <div class="tour-progress" id="tp3"></div>
+        </button>
+        <button class="tour-step" onclick="tourGo(4)">
+          <div class="tour-num" id="tn4">5</div>
+          <div><div class="tour-step-label">Finance Approves</div><div class="tour-step-sub">Green light — ready for payment</div></div>
+          <div class="tour-progress" id="tp4"></div>
+        </button>
+      </div>
+
+      <!-- Mock app window -->
+      <div class="mock-browser">
+        <div class="mock-chrome">
+          <div class="mock-dots">
+            <span class="mock-dot"></span><span class="mock-dot"></span><span class="mock-dot"></span>
+          </div>
+          <div class="mock-url-bar">
+            <i class="bi bi-lock-fill" style="color:#22c55e;font-size:9px"></i>
+            app.bizapps.app
+          </div>
+        </div>
+        <div class="mock-app-body">
+
+          <!-- Sidebar -->
+          <div class="mock-sidebar">
+            <div class="mock-sidebar-logo">
+              <svg width="20" height="20" viewBox="0 0 160 160" fill="none"><rect width="160" height="160" rx="28" fill="#1e293b"/><path d="M52 45 L32 80 L52 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M108 45 L128 80 L108 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="80" cy="80" r="22" fill="#22c55e"/></svg>
+              <span>GreenLight</span>
+            </div>
+            <div class="mock-side-link active"><i class="bi bi-speedometer2"></i> Dashboard</div>
+            <div class="mock-side-link"><i class="bi bi-file-earmark-text"></i> Reports</div>
+            <div class="mock-side-link"><i class="bi bi-people"></i> People</div>
+            <div class="mock-side-link"><i class="bi bi-gear"></i> Settings</div>
+          </div>
+
+          <!-- Frame area -->
+          <div class="mock-content">
+
+            <!-- Frame 0: Create Report -->
+            <div class="mock-frame active" id="mf0">
+              <div class="mf-title">New Expense Report</div>
+              <div class="mf-card">
+                <div class="mf-field">
+                  <div class="mf-label">Report Title</div>
+                  <div class="mf-input"><span class="type-anim">Q1 Team Offsite</span><span class="cursor-blink">|</span></div>
+                </div>
+                <div class="mf-field">
+                  <div class="mf-label">Employee</div>
+                  <div class="mf-input pre">Sarah Johnson</div>
+                </div>
+                <div class="mf-field">
+                  <div class="mf-label">Department</div>
+                  <div class="mf-input pre">Marketing</div>
+                </div>
+                <div class="mf-btn-row"><div class="mf-btn">Save as Draft</div></div>
+              </div>
+            </div>
+
+            <!-- Frame 1: Add Expenses -->
+            <div class="mock-frame" id="mf1">
+              <div class="mf-header">
+                <div><div class="mf-title" style="margin-bottom:4px">Q1 Team Offsite</div><span class="mf-badge draft">Draft</span></div>
+                <div class="mf-btn small">+ Add Line</div>
+              </div>
+              <div class="mf-table">
+                <div class="mf-thead"><span>Category</span><span>Date</span><span>Amount</span><span></span></div>
+                <div class="mf-row r1"><span>Meals</span><span>Apr 5</span><span class="mf-amt">$124.50</span><span><i class="bi bi-paperclip" style="color:#22c55e"></i></span></div>
+                <div class="mf-row r2"><span>Travel</span><span>Apr 6</span><span class="mf-amt">$380.00</span><span><i class="bi bi-paperclip" style="color:#22c55e"></i></span></div>
+                <div class="mf-row r3"><span>Hotel</span><span>Apr 7</span><span class="mf-amt">$650.00</span><span><i class="bi bi-paperclip" style="color:#22c55e"></i></span></div>
+              </div>
+              <div class="mf-total">Total: <strong>$1,154.50</strong></div>
+            </div>
+
+            <!-- Frame 2: Submitted -->
+            <div class="mock-frame" id="mf2">
+              <div class="mf-header">
+                <div><div class="mf-title" style="margin-bottom:4px">Q1 Team Offsite</div><span class="mf-badge submitted">Submitted</span></div>
+              </div>
+              <div class="mf-alert success"><i class="bi bi-check-circle-fill"></i> Submitted! Awaiting T&amp;E review.</div>
+              <div class="mf-table">
+                <div class="mf-thead t3"><span>Category</span><span>Date</span><span>Amount</span></div>
+                <div class="mf-row t3"><span>Meals</span><span>Apr 5</span><span class="mf-amt">$124.50</span></div>
+                <div class="mf-row t3"><span>Travel</span><span>Apr 6</span><span class="mf-amt">$380.00</span></div>
+                <div class="mf-row t3"><span>Hotel</span><span>Apr 7</span><span class="mf-amt">$650.00</span></div>
+              </div>
+              <div class="mf-total">Total: <strong>$1,154.50</strong></div>
+            </div>
+
+            <!-- Frame 3: T&E Review -->
+            <div class="mock-frame" id="mf3">
+              <div class="mf-header">
+                <div><div class="mf-title" style="margin-bottom:4px">Q1 Team Offsite</div><span class="mf-badge te">TE Approved</span></div>
+              </div>
+              <div class="mf-reviewer">
+                <div class="mf-reviewer-info">
+                  <div class="mf-avatar purple">A</div>
+                  <div>
+                    <div class="mf-reviewer-name">Alex Kim · T&amp;E Manager</div>
+                    <div class="mf-reviewer-note">"All expenses within policy."</div>
+                  </div>
+                </div>
+                <div class="mf-btn small green">✓ Approved</div>
+              </div>
+              <div class="mf-alert info"><i class="bi bi-arrow-right-circle-fill"></i> Forwarded to Finance for final approval.</div>
+              <div class="mf-table">
+                <div class="mf-thead t3"><span>Category</span><span>Date</span><span>Amount</span></div>
+                <div class="mf-row t3"><span>Meals</span><span>Apr 5</span><span class="mf-amt">$124.50</span></div>
+                <div class="mf-row t3"><span>Travel</span><span>Apr 6</span><span class="mf-amt">$380.00</span></div>
+                <div class="mf-row t3"><span>Hotel</span><span>Apr 7</span><span class="mf-amt">$650.00</span></div>
+              </div>
+            </div>
+
+            <!-- Frame 4: Finance Approved -->
+            <div class="mock-frame" id="mf4">
+              <div class="mf-success">
+                <div class="mf-check"><i class="bi bi-check-lg"></i></div>
+                <div class="mf-success-title">Fully Approved!</div>
+                <div class="mf-success-sub">Q1 Team Offsite · $1,154.50</div>
+                <span class="mf-badge approved">Approved</span>
+                <div class="mf-success-quote">"Great trip — processing payment now." — Finance</div>
+                <div class="mf-btn small" style="margin-top:12px;background:#22c55e"><i class="bi bi-download"></i>&nbsp;Export to CSV</div>
+              </div>
+            </div>
+
+          </div><!-- /mock-content -->
+        </div><!-- /mock-app-body -->
+      </div><!-- /mock-browser -->
+
+    </div><!-- /tour-layout -->
   </div>
 </section>
 
@@ -685,5 +1062,78 @@
   </div>
 </footer>
 
+<script>
+  (function () {
+    var STEPS = 5;
+    var DURATION = 4800; // ms per step
+    var current = 0;
+    var intervalId = null;
+    var startTs = null;
+    var rafId = null;
+
+    function getBtn(i)   { return document.querySelectorAll('.tour-step')[i]; }
+    function getFrame(i) { return document.getElementById('mf' + i); }
+    function getBar(i)   { return document.getElementById('tp' + i); }
+    function getNum(i)   { return document.getElementById('tn' + i); }
+
+    function tourGo(n) {
+      // Exit current frame
+      var oldFrame = getFrame(current);
+      oldFrame.classList.remove('active');
+      oldFrame.classList.add('exit');
+      setTimeout(function() { oldFrame.classList.remove('exit'); }, 300);
+
+      // Update step buttons
+      for (var i = 0; i < STEPS; i++) {
+        var btn = getBtn(i);
+        btn.classList.remove('active', 'done');
+        getBar(i).style.width = '0%';
+        if (i < n) btn.classList.add('done');
+      }
+      getBtn(n).classList.add('active');
+
+      // Activate new frame
+      current = n;
+      getFrame(n).classList.add('active');
+
+      // Restart progress bar animation
+      cancelAnimationFrame(rafId);
+      startTs = null;
+      animateBar(n);
+    }
+
+    function animateBar(n) {
+      rafId = requestAnimationFrame(function tick(ts) {
+        if (!startTs) startTs = ts;
+        var pct = Math.min((ts - startTs) / DURATION * 100, 100);
+        var bar = getBar(n);
+        if (bar) bar.style.width = pct + '%';
+        if (pct < 100) {
+          rafId = requestAnimationFrame(tick);
+        } else {
+          tourGo((n + 1) % STEPS);
+        }
+      });
+    }
+
+    // Expose globally for onclick handlers
+    window.tourGo = tourGo;
+
+    // Pause on hover
+    var browser = document.querySelector('.mock-browser');
+    if (browser) {
+      browser.addEventListener('mouseenter', function() {
+        cancelAnimationFrame(rafId);
+      });
+      browser.addEventListener('mouseleave', function() {
+        startTs = null;
+        animateBar(current);
+      });
+    }
+
+    // Kick off
+    tourGo(0);
+  })();
+</script>
 </body>
 </html>
