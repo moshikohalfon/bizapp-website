@@ -845,6 +845,7 @@
             <div class="mock-side-link active"><i class="bi bi-speedometer2"></i> Dashboard</div>
             <div class="mock-side-link"><i class="bi bi-file-earmark-text"></i> Reports</div>
             <div class="mock-side-link"><i class="bi bi-people"></i> People</div>
+            <div class="mock-side-link"><i class="bi bi-diagram-3"></i> Departments</div>
             <div class="mock-side-link"><i class="bi bi-gear"></i> Settings</div>
           </div>
 
@@ -957,28 +958,42 @@
         <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
         <div>
           <h4>Structured approvals</h4>
-          <p>Multi-step approval workflows with clear ownership at every stage — nothing falls through the cracks.</p>
+          <p>Two-step approval workflow — T&amp;E review then Finance sign-off — with clear ownership at every stage.</p>
         </div>
       </div>
       <div class="feature">
-        <div class="feature-icon"><i class="bi bi-cloud-check"></i></div>
+        <div class="feature-icon"><i class="bi bi-people"></i></div>
         <div>
-          <h4>Always accessible</h4>
-          <p>Cloud-hosted on AWS. Access from any device, anywhere — no software to install or maintain.</p>
+          <h4>Role-based access</h4>
+          <p>Four roles out of the box: Admin, Manager, Accountant, and User. Each sees only what they need.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><i class="bi bi-bell"></i></div>
+        <div>
+          <h4>Email notifications</h4>
+          <p>Automatic emails on every status change — submitted, approved, or rejected — so nothing waits in an inbox.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><i class="bi bi-receipt"></i></div>
+        <div>
+          <h4>Receipt management</h4>
+          <p>Attach receipts to every line item. Large images are auto-compressed; PDFs are stored as-is on AWS S3.</p>
         </div>
       </div>
       <div class="feature">
         <div class="feature-icon"><i class="bi bi-download"></i></div>
         <div>
           <h4>Accounting export</h4>
-          <p>Export approved reports directly to CSV for your accounting system. No manual data entry.</p>
+          <p>Export approved reports to CSV mapped to your GL codes. No manual re-entry in your accounting system.</p>
         </div>
       </div>
       <div class="feature">
         <div class="feature-icon"><i class="bi bi-person-check"></i></div>
         <div>
           <h4>Submit on behalf</h4>
-          <p>Managers and admins can submit expense reports on behalf of employees when needed.</p>
+          <p>Managers and admins can create and submit expense reports on behalf of any employee.</p>
         </div>
       </div>
       <div class="feature">
@@ -989,10 +1004,17 @@
         </div>
       </div>
       <div class="feature">
+        <div class="feature-icon"><i class="bi bi-phone"></i></div>
+        <div>
+          <h4>Mobile-responsive</h4>
+          <p>Fully responsive UI — employees can submit and managers can approve from any phone or tablet.</p>
+        </div>
+      </div>
+      <div class="feature">
         <div class="feature-icon"><i class="bi bi-graph-up"></i></div>
         <div>
           <h4>Live dashboard</h4>
-          <p>See the status of all reports at a glance — draft, pending, approved, or rejected.</p>
+          <p>See the status of all reports at a glance — draft, pending, approved, or rejected — with date range filtering.</p>
         </div>
       </div>
     </div>
@@ -1009,22 +1031,22 @@
       <div class="step">
         <div class="step-num">1</div>
         <h4>Employee submits</h4>
-        <p>Employee creates an expense report, adds line items, and submits for review.</p>
+        <p>Employee creates a report, adds line items with receipts, and clicks Submit. The T&amp;E team gets an email instantly.</p>
       </div>
       <div class="step">
         <div class="step-num">2</div>
-        <h4>T&E reviews</h4>
-        <p>The T&E team reviews for policy compliance and approves or rejects with comments.</p>
+        <h4>T&amp;E reviews</h4>
+        <p>The T&amp;E manager checks policy compliance and approves or rejects with a comment. Finance and the employee are notified.</p>
       </div>
       <div class="step">
         <div class="step-num">3</div>
         <h4>Finance approves</h4>
-        <p>Finance does a final review and gives the green light for payment.</p>
+        <p>Finance does a final review and gives the green light. The employee receives an approval email automatically.</p>
       </div>
       <div class="step">
         <div class="step-num">4</div>
-        <h4>Export & pay</h4>
-        <p>Finance exports the approved report to accounting and processes the reimbursement.</p>
+        <h4>Export &amp; pay</h4>
+        <p>Finance exports the approved report to CSV, mapped to GL codes, and processes the reimbursement.</p>
       </div>
     </div>
   </div>
