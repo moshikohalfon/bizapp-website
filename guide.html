@@ -20,271 +20,192 @@
       --border: #e4e4e4;
       --text:   #010a34;
       --muted:  #6b7280;
-      --radius: 14px;
     }
 
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Manrope', sans-serif;
-      color: var(--text);
-      background: #fff;
-      line-height: 1.7;
-    }
+    body { font-family: 'Manrope', sans-serif; color: var(--text); background: #fff; line-height: 1.7; }
 
     /* ── NAV ── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      background: rgba(1,10,52,0.97);
-      backdrop-filter: blur(12px);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(1,10,52,0.97); backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
     .nav-inner {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 32px;
-      height: 64px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      max-width: 1160px; margin: 0 auto; padding: 0 32px;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .nav-logo svg { width: 36px; height: 36px; }
-    .nav-logo .wordmark {
-      font-size: 18px;
-      font-weight: 800;
-      color: #fff;
-      letter-spacing: -.02em;
-    }
+    .nav-logo .wordmark { font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -.02em; }
     .nav-logo .wordmark span { color: var(--blue3); font-weight: 300; }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-      list-style: none;
-    }
-    .nav-links a {
-      color: rgba(255,255,255,.65);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: color .15s;
-    }
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,.65); text-decoration: none; font-size: 14px; font-weight: 500; transition: color .15s; }
     .nav-links a:hover { color: #fff; }
-    .nav-cta {
-      background: var(--blue);
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 8px;
-      font-weight: 700 !important;
-      transition: background .15s !important;
-    }
+    .nav-cta { background: var(--blue); color: #fff !important; padding: 8px 20px; border-radius: 8px; font-weight: 700 !important; transition: background .15s !important; }
     .nav-cta:hover { background: #013588 !important; }
+    @media (max-width: 720px) { .nav-links { display: none; } }
 
-    @media (max-width: 680px) { .nav-links { display: none; } }
+    /* ── HERO BANNER ── */
+    .guide-hero {
+      background: var(--navy);
+      padding: 100px 32px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-hero::before {
+      content: '';
+      position: absolute; top: -160px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(59,130,246,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .guide-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.25);
+      color: var(--blue3); font-size: 11px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 4px 14px; border-radius: 20px; margin-bottom: 20px;
+    }
+    .guide-hero h1 {
+      font-size: clamp(30px, 4vw, 52px); font-weight: 800;
+      color: #fff; letter-spacing: -.03em; line-height: 1.1;
+      margin-bottom: 14px;
+    }
+    .guide-hero h1 span { color: var(--blue3); }
+    .guide-hero p {
+      font-size: 17px; color: rgba(255,255,255,.55);
+      max-width: 520px; margin: 0 auto; font-weight: 400;
+    }
 
     /* ── LAYOUT ── */
-    .page {
+    .page-wrap {
       max-width: 1160px;
       margin: 0 auto;
-      padding: 100px 32px 80px;
+      padding: 56px 32px 80px;
       display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 64px;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
       align-items: start;
     }
     @media (max-width: 860px) {
-      .page { grid-template-columns: 1fr; padding: 88px 20px 60px; gap: 32px; }
+      .page-wrap { grid-template-columns: 1fr; padding: 40px 20px 60px; gap: 0; }
       .sidebar { display: none; }
     }
 
     /* ── SIDEBAR ── */
     .sidebar {
       position: sticky;
-      top: 84px;
+      top: 80px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
     }
     .sidebar-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 12px;
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 12px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border);
     }
     .sidebar nav a {
-      display: block;
-      font-size: 13.5px;
-      font-weight: 500;
-      color: var(--muted);
-      text-decoration: none;
-      padding: 6px 0;
-      border-left: 2px solid transparent;
-      padding-left: 12px;
-      transition: color .15s, border-color .15s;
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 500; color: var(--muted);
+      text-decoration: none; padding: 7px 10px; border-radius: 7px;
+      transition: background .15s, color .15s;
     }
-    .sidebar nav a:hover { color: var(--blue); border-left-color: var(--blue); }
-    .sidebar nav a.active { color: var(--blue); border-left-color: var(--blue); font-weight: 600; }
+    .sidebar nav a:hover { background: #eef2ff; color: var(--blue); }
+    .sidebar nav a.active { background: #eef2ff; color: var(--blue); font-weight: 700; }
+    .sidebar nav a i { font-size: 13px; flex-shrink: 0; }
 
     /* ── CONTENT ── */
     .content h1 {
-      font-size: clamp(28px, 4vw, 42px);
-      font-weight: 800;
-      letter-spacing: -.03em;
-      color: var(--navy);
-      margin-bottom: 10px;
+      font-size: clamp(26px, 3vw, 38px); font-weight: 800;
+      letter-spacing: -.03em; color: var(--navy); margin-bottom: 8px;
     }
-    .content .subtitle {
-      font-size: 17px;
-      color: var(--muted);
-      margin-bottom: 48px;
-      font-weight: 400;
-    }
+    .content .subtitle { font-size: 16px; color: var(--muted); margin-bottom: 44px; }
 
-    .section { margin-bottom: 64px; }
-    .section:target { scroll-margin-top: 84px; }
+    .section { margin-bottom: 60px; padding-bottom: 60px; border-bottom: 1px solid var(--border); }
+    .section:last-child { border-bottom: none; }
+    .section[id] { scroll-margin-top: 80px; }
 
     .section h2 {
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--navy);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      font-size: 21px; font-weight: 800; color: var(--navy);
+      margin-bottom: 16px; display: flex; align-items: center; gap: 12px;
     }
     .section h2 .icon {
-      width: 36px; height: 36px;
-      border-radius: 9px;
+      width: 38px; height: 38px; border-radius: 10px;
       background: rgba(2,67,172,.08);
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px;
-      color: var(--blue);
-      flex-shrink: 0;
+      font-size: 17px; color: var(--blue); flex-shrink: 0;
     }
-
-    .section h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy);
-      margin: 24px 0 8px;
-    }
-
+    .section h3 { font-size: 15px; font-weight: 700; color: var(--navy); margin: 22px 0 8px; }
     .section p { font-size: 15px; color: #374151; margin-bottom: 12px; }
-    .section ul, .section ol {
-      padding-left: 20px;
-      margin-bottom: 14px;
-    }
+    .section ul, .section ol { padding-left: 20px; margin-bottom: 14px; }
     .section li { font-size: 15px; color: #374151; margin-bottom: 6px; }
 
     .tip {
-      background: rgba(2,67,172,.05);
-      border-left: 3px solid var(--blue);
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin: 16px 0;
-      font-size: 14px;
-      color: #1e40af;
+      background: rgba(2,67,172,.05); border-left: 3px solid var(--blue);
+      border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 16px 0;
+      font-size: 14px; color: #1e40af;
     }
     .tip strong { font-weight: 700; }
-
     .warn {
-      background: rgba(251,191,36,.08);
-      border-left: 3px solid #f59e0b;
-      border-radius: 0 8px 8px 0;
-      padding: 12px 16px;
-      margin: 16px 0;
-      font-size: 14px;
-      color: #92400e;
+      background: rgba(245,158,11,.07); border-left: 3px solid #f59e0b;
+      border-radius: 0 8px 8px 0; padding: 12px 16px; margin: 16px 0;
+      font-size: 14px; color: #92400e;
     }
 
-    .steps {
-      counter-reset: step;
-      list-style: none;
-      padding: 0;
-      margin: 16px 0;
-    }
+    .steps { counter-reset: step; list-style: none; padding: 0; margin: 16px 0; }
     .steps li {
-      counter-increment: step;
-      display: flex;
-      gap: 14px;
-      margin-bottom: 14px;
-      align-items: flex-start;
+      counter-increment: step; display: flex; gap: 14px;
+      margin-bottom: 12px; align-items: flex-start;
     }
     .steps li::before {
       content: counter(step);
-      min-width: 26px; height: 26px;
-      background: var(--blue);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      border-radius: 50%;
+      min-width: 26px; height: 26px; background: var(--blue); color: #fff;
+      font-size: 12px; font-weight: 700; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
+      flex-shrink: 0; margin-top: 1px;
     }
 
-    .role-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 14px;
-      margin: 16px 0;
-    }
-    .role-card {
-      border: 1.5px solid var(--border);
-      border-radius: 10px;
-      padding: 16px;
-    }
-    .role-card .role-name {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 6px;
-    }
+    .role-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 16px 0; }
+    .role-card { border: 1.5px solid var(--border); border-radius: 10px; padding: 16px; background: #fafafa; }
+    .role-card .role-name { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
     .role-card p { font-size: 13px; color: var(--muted); margin: 0; }
 
-    .status-flow {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin: 16px 0;
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .status-pill {
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .s-draft    { background: #f3f4f6; color: #6b7280; }
+    .status-flow { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 16px 0; }
+    .status-pill { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+    .s-draft    { background: #f1f5f9; color: #64748b; }
     .s-sub      { background: #dbeafe; color: #1d4ed8; }
     .s-te       { background: #fef9c3; color: #854d0e; }
     .s-approved { background: #dcfce7; color: #166534; }
     .s-rejected { background: #fee2e2; color: #991b1b; }
-    .arrow { color: var(--muted); font-size: 16px; }
+    .arrow { color: var(--muted); }
 
     /* ── FOOTER ── */
     footer {
       background: var(--navy);
-      color: rgba(255,255,255,.4);
-      text-align: center;
-      padding: 32px;
-      font-size: 13px;
+      padding: 40px 32px;
     }
-    footer a { color: rgba(255,255,255,.5); text-decoration: none; }
-    footer a:hover { color: #fff; }
+    .footer-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .footer-logo .wordmark { font-size: 16px; font-weight: 800; color: #fff; letter-spacing: -.02em; }
+    .footer-logo .wordmark span { color: var(--blue3); font-weight: 300; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,.45); text-decoration: none; font-size: 13px; transition: color .15s; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { color: rgba(255,255,255,.3); font-size: 13px; }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-logo">
@@ -303,34 +224,42 @@
     <ul class="nav-links">
       <li><a href="/">Home</a></li>
       <li><a href="/#features">Features</a></li>
-      <li><a href="https://app.bizapps.app/login" class="nav-cta">Sign In</a></li>
+      <li><a href="/#how-it-works">How It Works</a></li>
+      <li><a href="/#tour">Product Tour</a></li>
+      <li><a href="https://app.bizapps.app/login">Sign In</a></li>
+      <li><a href="https://app.bizapps.app/register" class="nav-cta">Start Free Trial</a></li>
     </ul>
   </div>
 </nav>
 
-<div class="page">
+<!-- HERO BANNER -->
+<div class="guide-hero">
+  <div class="guide-badge"><i class="bi bi-book"></i> Documentation</div>
+  <h1>GreenLight <span>User Guide</span></h1>
+  <p>Everything you need to submit, approve, and manage expense reports — step by step.</p>
+</div>
+
+<!-- PAGE BODY -->
+<div class="page-wrap">
 
   <!-- Sidebar -->
   <aside class="sidebar">
     <div class="sidebar-label">On this page</div>
     <nav>
-      <a href="#getting-started">Getting Started</a>
-      <a href="#roles">Roles &amp; Permissions</a>
-      <a href="#submitting">Submitting an Expense</a>
-      <a href="#approval">Approval Workflow</a>
-      <a href="#accounting">Accounting &amp; Export</a>
-      <a href="#people">Managing People</a>
-      <a href="#settings">Settings &amp; Categories</a>
-      <a href="#billing">Billing</a>
-      <a href="#faq">FAQ</a>
+      <a href="#getting-started"><i class="bi bi-rocket-takeoff"></i> Getting Started</a>
+      <a href="#roles"><i class="bi bi-people"></i> Roles &amp; Permissions</a>
+      <a href="#submitting"><i class="bi bi-receipt"></i> Submitting an Expense</a>
+      <a href="#approval"><i class="bi bi-check2-circle"></i> Approval Workflow</a>
+      <a href="#accounting"><i class="bi bi-table"></i> Accounting &amp; Export</a>
+      <a href="#people"><i class="bi bi-person-badge"></i> Managing People</a>
+      <a href="#settings"><i class="bi bi-sliders"></i> Settings &amp; Categories</a>
+      <a href="#billing"><i class="bi bi-credit-card"></i> Billing</a>
+      <a href="#faq"><i class="bi bi-question-circle"></i> FAQ</a>
     </nav>
   </aside>
 
   <!-- Main content -->
   <main class="content">
-
-    <h1>GreenLight User Guide</h1>
-    <p class="subtitle">Everything you need to submit, approve, and manage expense reports.</p>
 
     <!-- 1. Getting Started -->
     <div class="section" id="getting-started">
@@ -348,7 +277,7 @@
       <h3>Logging in</h3>
       <p>Visit <a href="https://app.bizapps.app/login" style="color:var(--blue)">app.bizapps.app/login</a>. Usernames are case-insensitive. You can also sign in with Google if your admin has enabled it.</p>
 
-      <div class="tip"><strong>Tip:</strong> Change your password on first login via the shield icon in the bottom-left of the sidebar.</div>
+      <div class="tip"><strong>Tip:</strong> Change your password on first login via the shield icon at the bottom of the sidebar.</div>
     </div>
 
     <!-- 2. Roles -->
@@ -361,7 +290,7 @@
           <p>Full access — manages people, departments, categories, billing, and can view all reports.</p>
         </div>
         <div class="role-card">
-          <div class="role-name"><i class="bi bi-person-check"></i> T&amp;E Approver (Manager)</div>
+          <div class="role-name"><i class="bi bi-person-check"></i> T&amp;E Approver</div>
           <p>Reviews and approves submitted reports for the first stage of approval.</p>
         </div>
         <div class="role-card">
@@ -373,7 +302,7 @@
           <p>Submits expense reports and tracks their own approval status.</p>
         </div>
       </div>
-      <div class="tip"><strong>Tip:</strong> A person can only hold one role. Promote them to Manager or Accountant under <strong>People → Edit</strong>.</div>
+      <div class="tip"><strong>Tip:</strong> A person can only hold one role. Promote them under <strong>People → Edit</strong>.</div>
     </div>
 
     <!-- 3. Submitting -->
@@ -391,7 +320,7 @@
       <h3>Add expense lines</h3>
       <ol class="steps">
         <li>Fill in the description, amount, date, and category for each expense.</li>
-        <li>Attach a receipt (PDF, PNG, JPG, HEIC — max 5 MB, or JPEG up to 15 MB is auto-compressed).</li>
+        <li>Attach a receipt — PDF, PNG, JPG, or HEIC, max 5 MB (JPEGs up to 15 MB are auto-compressed).</li>
         <li>Click <strong>Add Line</strong>. Repeat for each expense.</li>
       </ol>
 
@@ -422,7 +351,7 @@
         <span class="arrow">→</span>
         <span class="status-pill s-approved">Approved</span>
       </div>
-      <p style="margin-top:4px;font-size:13px;color:var(--muted)">At any stage after submission, a report can be <span class="status-pill s-rejected" style="font-size:11px">Rejected</span> with a reason.</p>
+      <p style="font-size:13px;color:var(--muted);margin-top:6px">At any stage after submission, a report can be <span class="status-pill s-rejected" style="font-size:11px">Rejected</span> with a reason.</p>
 
       <h3>Stage 1 — T&amp;E Approver (Manager)</h3>
       <ol class="steps">
@@ -438,7 +367,7 @@
         <li>Click <strong>Final Approve</strong> to mark it <em>Approved</em>, or <strong>Reject</strong> with a reason.</li>
       </ol>
 
-      <div class="tip"><strong>Tip:</strong> Rejected reports are returned to the submitter with the reason shown on the report. The submitter can contact their admin to unlock and resubmit if needed.</div>
+      <div class="tip"><strong>Tip:</strong> Rejected reports are returned to the submitter with the reason shown on the report.</div>
     </div>
 
     <!-- 5. Accounting -->
@@ -461,7 +390,7 @@
       <p>Admins manage the employee directory and user accounts separately.</p>
 
       <h3>Employees vs. Users</h3>
-      <p><strong>Employees</strong> are the people in your company directory (name, email, department, manager). <strong>Users</strong> are the login accounts. You link a user to an employee record so their reports are attributed correctly.</p>
+      <p><strong>Employees</strong> are people in your company directory (name, email, department, manager). <strong>Users</strong> are the login accounts linked to an employee record so their reports are attributed correctly.</p>
 
       <h3>Add an employee</h3>
       <ol class="steps">
@@ -479,15 +408,15 @@
       <h2><span class="icon"><i class="bi bi-sliders"></i></span>Settings &amp; Categories</h2>
 
       <h3>Expense categories</h3>
-      <p>Categories group expense lines (e.g. Travel, Meals, Office Supplies). Each category can have an optional GL code that appears in CSV exports for your accounting system.</p>
+      <p>Categories group expense lines (e.g. Travel, Meals, Office Supplies). Each category can have an optional GL code for your accounting system.</p>
       <ol class="steps">
         <li>Go to <strong>Categories</strong> in the sidebar.</li>
         <li>Click <strong>Add Category</strong>, enter a name and optional GL code.</li>
         <li>Categories are available immediately when creating new expense lines.</li>
       </ol>
 
-      <h3>Changing your password</h3>
-      <p>Click the <strong>shield icon</strong> at the bottom of the sidebar. We recommend using a strong, unique password. Two-factor authentication (TOTP) can also be enabled on this page.</p>
+      <h3>Changing your password &amp; 2FA</h3>
+      <p>Click the <strong>shield icon</strong> at the bottom of the sidebar to change your password or enable two-factor authentication (TOTP).</p>
     </div>
 
     <!-- 8. Billing -->
@@ -496,7 +425,7 @@
       <p>GreenLight is priced per 10 active users/month. Admins manage billing under <strong>Billing</strong> in the sidebar.</p>
 
       <h3>Trial period</h3>
-      <p>New workspaces start with a 60-day free trial — no credit card required. You'll see how many days remain in the Billing page.</p>
+      <p>New workspaces start with a <strong>60-day free trial</strong> — no credit card required. You'll see how many days remain on the Billing page.</p>
 
       <h3>Subscribe</h3>
       <ol class="steps">
@@ -506,7 +435,7 @@
       </ol>
 
       <h3>Manage subscription</h3>
-      <p>Click <strong>Manage subscription / Update payment method</strong> to update your card, view invoices, or cancel. This opens a secure billing portal.</p>
+      <p>Click <strong>Manage subscription / Update payment method</strong> to update your card, view invoices, or cancel via the secure billing portal.</p>
 
       <div class="tip"><strong>Tip:</strong> Pricing is based on active users only. Deactivating an employee reduces your seat count at the next billing cycle.</div>
     </div>
@@ -528,29 +457,49 @@
       <p>Go to <strong>People → Add Person</strong> and check <em>Create login account</em>. Each new active user is included in your next billing cycle automatically.</p>
 
       <h3>Who do I contact for help?</h3>
-      <p>Email us at <a href="mailto:support@bizapps.app" style="color:var(--blue)">support@bizapps.app</a> and we'll get back to you within one business day.</p>
+      <p>Email us at <a href="mailto:support@bizapps.app" style="color:var(--blue)">support@bizapps.app</a> — we'll get back to you within one business day.</p>
     </div>
 
   </main>
 </div>
 
+<!-- FOOTER -->
 <footer>
-  <p>&copy; 2026 BizApps &nbsp;·&nbsp; <a href="https://app.bizapps.app/privacy">Privacy Policy</a> &nbsp;·&nbsp; <a href="https://app.bizapps.app/terms">Terms of Service</a> &nbsp;·&nbsp; <a href="mailto:support@bizapps.app">support@bizapps.app</a></p>
+  <div class="footer-inner">
+    <a href="/" class="footer-logo">
+      <svg width="28" height="28" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="160" height="160" rx="28" fill="#1e293b"/>
+        <path d="M50 68 L36 82 L36 102 L50 116" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M110 68 L124 82 L124 102 L110 116" stroke="#3b82f6" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <rect x="58" y="79" width="44" height="5" rx="2.5" fill="#60a5fa"/>
+        <rect x="63" y="90" width="34" height="5" rx="2.5" fill="#93c5fd" opacity="0.75"/>
+        <rect x="58" y="101" width="44" height="5" rx="2.5" fill="#60a5fa"/>
+      </svg>
+      <div class="wordmark">Biz<span>Apps</span></div>
+    </a>
+    <div class="footer-copy">&copy; 2026 BizApps. All rights reserved.</div>
+    <ul class="footer-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/guide">User Guide</a></li>
+      <li><a href="https://app.bizapps.app/privacy">Privacy Policy</a></li>
+      <li><a href="https://app.bizapps.app/terms">Terms of Service</a></li>
+      <li><a href="mailto:support@bizapps.app">Contact</a></li>
+    </ul>
+  </div>
 </footer>
 
 <script>
-  // Highlight active sidebar link on scroll
   const sections = document.querySelectorAll('.section[id]');
   const links = document.querySelectorAll('.sidebar nav a');
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => {
       if (e.isIntersecting) {
         links.forEach(l => l.classList.remove('active'));
-        const active = document.querySelector(`.sidebar nav a[href="#${e.target.id}"]`);
-        if (active) active.classList.add('active');
+        const a = document.querySelector(`.sidebar nav a[href="#${e.target.id}"]`);
+        if (a) a.classList.add('active');
       }
     });
-  }, { rootMargin: '-20% 0px -70% 0px' });
+  }, { rootMargin: '-15% 0px -70% 0px' });
   sections.forEach(s => observer.observe(s));
 </script>
 
