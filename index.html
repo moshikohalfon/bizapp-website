@@ -471,7 +471,7 @@
       <li><a href="#features">Features</a></li>
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="#tour">Product Tour</a></li>
-      <li><a href="/guide">User Guide</a></li>
+      <li><a href="/guide">GreenLight Guide</a></li>
       <li><a href="https://app.bizapps.app/login">Sign In</a></li>
       <li><a href="https://app.bizapps.app/register" class="nav-cta">Start Free Trial</a></li>
     </ul>
@@ -514,57 +514,47 @@
 <!-- PRODUCTS -->
 <section class="products" id="products">
   <div class="section-inner">
-    <div class="section-label">Our Products</div>
-    <div class="section-title">Everything your business needs</div>
-    <div class="section-sub">A growing suite of tools built to replace spreadsheets and manual processes.</div>
+    <div class="section-label">Our Product</div>
+    <div class="section-title">Expense approvals, done right</div>
+    <div class="section-sub">GreenLight replaces spreadsheets and email chains with a structured, auditable approval workflow.</div>
 
-    <div class="products-grid">
+    <div class="products-grid" style="grid-template-columns: minmax(0, 480px); justify-content: center;">
 
-      <!-- Product 1: GreenLight -->
-      <a href="https://app.bizapps.app/login" class="product-card">
-        <div class="product-icon" style="background:none;padding:0">
-          <svg width="52" height="52" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px">
-            <rect width="160" height="160" rx="28" fill="#1e293b"/>
-            <path d="M52 45 L32 80 L52 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <path d="M108 45 L128 80 L108 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <circle cx="80" cy="80" r="22" fill="#22c55e"/>
-            <circle cx="80" cy="80" r="32" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.25"/>
-          </svg>
+      <!-- GreenLight -->
+      <div class="product-card" style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="product-icon" style="background:none;padding:0;flex-shrink:0">
+            <svg width="52" height="52" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg" style="border-radius:12px">
+              <rect width="160" height="160" rx="28" fill="#1e293b"/>
+              <path d="M52 45 L32 80 L52 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <path d="M108 45 L128 80 L108 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              <circle cx="80" cy="80" r="22" fill="#22c55e"/>
+              <circle cx="80" cy="80" r="32" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.25"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size:22px;font-weight:800;color:var(--navy);margin-bottom:4px">GreenLight</h3>
+            <p style="color:var(--muted);font-size:14px;margin:0">Expense reimbursement &amp; approval workflows</p>
+          </div>
         </div>
-        <h3>GreenLight</h3>
-        <p>Submit, review, and approve employee expense reports with a structured two-step workflow — T&E review followed by Finance approval.</p>
+        <p>Submit, review, and approve employee expense reports with a structured two-step workflow — T&amp;E review followed by Finance approval. Attach receipts, export to CSV, and keep a full audit trail.</p>
         <div>
           <span class="product-tag">Expenses</span>
           <span class="product-tag">Approvals</span>
           <span class="product-tag">Accounting</span>
+          <span class="product-tag">Receipts</span>
         </div>
-        <div class="product-link">Open app <i class="bi bi-arrow-right"></i></div>
-      </a>
-
-      <!-- Product 2: Coming soon -->
-      <div class="product-card" style="opacity:.6;cursor:default">
-        <div class="product-icon"><i class="bi bi-people"></i></div>
-        <h3>HR & People Management</h3>
-        <p>Manage employee records, departments, onboarding workflows, and org structure — all in one place.</p>
-        <div>
-          <span class="product-tag">HR</span>
-          <span class="product-tag">People</span>
-          <span class="product-tag">Onboarding</span>
+        <div style="display:flex; gap:12px; margin-top:4px;">
+          <a href="https://app.bizapps.app/register" style="background:var(--blue);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px">
+            <i class="bi bi-rocket-takeoff"></i> Start Free Trial
+          </a>
+          <a href="https://app.bizapps.app/login" style="color:var(--blue);padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:1.5px solid var(--blue);display:inline-flex;align-items:center;gap:6px">
+            Sign In
+          </a>
+          <a href="/guide" style="color:var(--muted);padding:10px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;border:1.5px solid var(--border);display:inline-flex;align-items:center;gap:6px">
+            <i class="bi bi-book"></i> GreenLight User Guide
+          </a>
         </div>
-        <div class="product-link" style="color:var(--muted)">Coming soon</div>
-      </div>
-
-      <!-- Product 3: Coming soon -->
-      <div class="product-card" style="opacity:.6;cursor:default">
-        <div class="product-icon"><i class="bi bi-bar-chart-line"></i></div>
-        <h3>Financial Reporting</h3>
-        <p>Real-time dashboards and reports that connect your operational data to accounting and finance teams.</p>
-        <div>
-          <span class="product-tag">Finance</span>
-          <span class="product-tag">Reports</span>
-          <span class="product-tag">Analytics</span>
-        </div>
-        <div class="product-link" style="color:var(--muted)">Coming soon</div>
       </div>
 
     </div>
@@ -1101,7 +1091,7 @@
       <li><a href="#how-it-works">How It Works</a></li>
       <li><a href="https://app.bizapps.app/login">Sign In</a></li>
       <li><a href="https://app.bizapps.app/register">Start Free Trial</a></li>
-      <li><a href="/guide">User Guide</a></li>
+      <li><a href="/guide">GreenLight Guide</a></li>
       <li><a href="https://app.bizapps.app/privacy">Privacy Policy</a></li>
       <li><a href="https://app.bizapps.app/terms">Terms of Service</a></li>
     </ul>
