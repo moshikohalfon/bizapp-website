@@ -537,12 +537,13 @@
             <p style="color:var(--muted);font-size:14px;margin:0">Expense reimbursement &amp; approval workflows</p>
           </div>
         </div>
-        <p>Submit, review, and approve employee expense reports with a structured two-step workflow — T&amp;E review followed by Finance approval. Attach receipts, export to CSV, and keep a full audit trail.</p>
+        <p>Submit, review, and approve employee expense reports with a structured two-step workflow — T&amp;E review followed by Finance approval. Upload a receipt and GreenLight reads the details automatically. Export approved expenses directly to QuickBooks or CSV.</p>
         <div>
           <span class="product-tag">Expenses</span>
           <span class="product-tag">Approvals</span>
-          <span class="product-tag">Accounting</span>
-          <span class="product-tag">Receipts</span>
+          <span class="product-tag">QuickBooks</span>
+          <span class="product-tag">OCR Scanning</span>
+          <span class="product-tag">Multi-currency</span>
         </div>
         <div style="display:flex; gap:12px; margin-top:4px;">
           <a href="https://app.bizapps.app/register" style="background:var(--blue);color:#fff;padding:10px 20px;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px">
@@ -947,10 +948,31 @@
 
     <div class="features-grid">
       <div class="feature">
+        <div class="feature-icon"><i class="bi bi-camera"></i></div>
+        <div>
+          <h4>AI receipt scanning</h4>
+          <p>Upload any receipt or invoice — GreenLight automatically reads the merchant, amount, date, and document number. No manual typing.</p>
+        </div>
+      </div>
+      <div class="feature">
         <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
         <div>
           <h4>Structured approvals</h4>
-          <p>Two-step approval workflow — T&amp;E review then Finance sign-off — with clear ownership at every stage.</p>
+          <p>Two-step workflow — T&amp;E review then Finance sign-off — with clear ownership at every stage and a full audit trail.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><i class="bi bi-quickbooks" style="font-size:18px"></i></div>
+        <div>
+          <h4>QuickBooks integration</h4>
+          <p>Connect your QuickBooks Online account and push approved expenses directly — no CSV import, no double entry.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><i class="bi bi-currency-exchange"></i></div>
+        <div>
+          <h4>Multi-currency</h4>
+          <p>Employees submit in any currency. GreenLight converts to USD automatically using live exchange rates at time of submission.</p>
         </div>
       </div>
       <div class="feature">
@@ -968,24 +990,24 @@
         </div>
       </div>
       <div class="feature">
-        <div class="feature-icon"><i class="bi bi-receipt"></i></div>
+        <div class="feature-icon"><i class="bi bi-copy"></i></div>
         <div>
-          <h4>Receipt management</h4>
-          <p>Attach receipts to every line item. Large images are auto-compressed; PDFs are stored as-is on AWS S3.</p>
+          <h4>Duplicate detection</h4>
+          <p>GreenLight flags potential duplicate expense lines before they reach Finance — saving time and preventing overpayments.</p>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature-icon"><i class="bi bi-chat-left-text"></i></div>
+        <div>
+          <h4>Activity &amp; comments</h4>
+          <p>Every report has a full activity trail — approvals, rejections, and comments — so everyone stays on the same page.</p>
         </div>
       </div>
       <div class="feature">
         <div class="feature-icon"><i class="bi bi-download"></i></div>
         <div>
           <h4>Accounting export</h4>
-          <p>Export approved reports to CSV mapped to your GL codes. No manual re-entry in your accounting system.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><i class="bi bi-paperclip"></i></div>
-        <div>
-          <h4>Receipt attachments</h4>
-          <p>Attach receipts in any format — PDF, JPG, PNG, or HEIC. Large files are auto-compressed so nothing gets lost.</p>
+          <p>Export approved reports to CSV mapped to your GL codes, or push directly to QuickBooks Online with one click.</p>
         </div>
       </div>
       <div class="feature">
@@ -1000,13 +1022,6 @@
         <div>
           <h4>Mobile-responsive</h4>
           <p>Fully responsive UI — employees can submit and managers can approve from any phone or tablet.</p>
-        </div>
-      </div>
-      <div class="feature">
-        <div class="feature-icon"><i class="bi bi-graph-up"></i></div>
-        <div>
-          <h4>Live dashboard</h4>
-          <p>See the status of all reports at a glance — draft, pending, approved, or rejected — with date range filtering.</p>
         </div>
       </div>
       <div class="feature">
@@ -1045,7 +1060,7 @@
       <div class="step">
         <div class="step-num">4</div>
         <h4>Export &amp; pay</h4>
-        <p>Finance exports the approved report to CSV, mapped to GL codes, and processes the reimbursement.</p>
+        <p>Finance pushes approved expenses directly to QuickBooks Online, or downloads a CSV mapped to GL codes. Reimbursement processed.</p>
       </div>
     </div>
   </div>
