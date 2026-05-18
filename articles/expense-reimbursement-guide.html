@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A complete guide to employee expense reimbursement — how to set up policies, approval workflows, and pay employees back faster. Includes statistics and best practices.">
+  <title>The Complete Guide to Employee Expense Reimbursement | BizApps</title>
+  <link rel="canonical" href="https://bizapps.app/articles/expense-reimbursement-guide.html">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Manrope',sans-serif;color:#1f2937;background:#fff;line-height:1.7}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(1,10,52,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .wordmark{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.02em}
+    .wordmark span{color:#60a5fa;font-weight:300}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;font-weight:500}
+    .nav-links a:hover{color:#fff}
+    .nav-cta{background:#0243ac;color:#fff!important;padding:8px 20px;border-radius:8px;font-weight:700!important}
+    .hero{background:#f8fafc;padding:100px 32px 56px;border-bottom:1px solid #e5e7eb}
+    .hero-inner{max-width:720px;margin:0 auto}
+    .badge{background:#dbeafe;color:#1d4ed8;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:20px}
+    .hero h1{font-size:clamp(26px,4vw,42px);font-weight:800;color:#010a34;letter-spacing:-.02em;line-height:1.2;margin-bottom:16px}
+    .hero-meta{font-size:14px;color:#6b7280;display:flex;gap:20px;flex-wrap:wrap}
+    article{max-width:720px;margin:0 auto;padding:56px 32px 80px}
+    h2{font-size:22px;font-weight:800;color:#010a34;letter-spacing:-.01em;margin:40px 0 12px}
+    h3{font-size:17px;font-weight:700;color:#010a34;margin:28px 0 8px}
+    p{font-size:16px;color:#374151;margin-bottom:16px;line-height:1.75}
+    ul,ol{padding-left:24px;margin-bottom:16px}
+    li{font-size:16px;color:#374151;margin-bottom:8px;line-height:1.6}
+    .stat-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;align-items:flex-start;gap:16px}
+    .stat-num{font-size:36px;font-weight:800;color:#0243ac;letter-spacing:-.02em;flex-shrink:0}
+    .stat-text{font-size:14px;color:#1e40af;line-height:1.5}
+    .stat-source{font-size:11px;color:#93c5fd;margin-top:4px}
+    .callout{background:#f0fdf4;border-left:4px solid #22c55e;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0}
+    .callout p{color:#166534;margin:0;font-size:15px}
+    .cta-box{background:linear-gradient(135deg,#010a34,#0243ac);border-radius:14px;padding:32px;text-align:center;margin:48px 0}
+    .cta-box h3{color:#fff;font-size:20px;margin-bottom:8px;margin-top:0}
+    .cta-box p{color:rgba(255,255,255,.7);margin-bottom:20px}
+    .cta-btn{background:#22c55e;color:#fff;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block;font-size:15px}
+    table{width:100%;border-collapse:collapse;margin:24px 0;font-size:14px}
+    th{background:#f3f4f6;color:#374151;font-weight:700;padding:10px 14px;text-align:left;border:1px solid #e5e7eb}
+    td{padding:10px 14px;border:1px solid #e5e7eb;color:#374151}
+    tr:nth-child(even) td{background:#f9fafb}
+    footer{background:#000818;padding:40px 32px;border-top:1px solid rgba(255,255,255,.06);text-align:center}
+    .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+    .footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.3);margin-top:16px}
+    @media(max-width:640px){nav .nav-links{display:none}article{padding:40px 20px 60px}.hero{padding:88px 20px 40px}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 160 160" fill="none"><rect width="160" height="160" rx="28" fill="#1e293b"/><path d="M52 45 L32 80 L52 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M108 45 L128 80 L108 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="80" cy="80" r="22" fill="#22c55e"/></svg>
+      <div class="wordmark">Biz<span>Apps</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles.html">Resources</a></li>
+      <li><a href="/guide.html">User Guide</a></li>
+      <li><a href="https://app.bizapps.app/login">Sign In</a></li>
+      <li><a href="https://app.bizapps.app/register" class="nav-cta">Start Free Trial</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="badge">Guide</div>
+    <h1>The Complete Guide to Employee Expense Reimbursement</h1>
+    <div class="hero-meta">
+      <span><i class="bi bi-clock me-1"></i> 7 min read</span>
+      <span><i class="bi bi-calendar3 me-1"></i> Updated May 2026</span>
+      <span><i class="bi bi-building me-1"></i> For small &amp; mid-size businesses</span>
+    </div>
+  </div>
+</div>
+
+<article>
+
+<p>When an employee pays out of pocket for a business expense — a flight, a client dinner, a software subscription — your company owes them money back. Simple concept. But the process of collecting receipts, verifying expenses, getting approvals, and actually paying people back is surprisingly painful for most companies.</p>
+
+<p>This guide covers everything you need to build a reimbursement process that's fast for employees, auditable for finance, and scalable as your team grows.</p>
+
+<h2>The Real Cost of Manual Expense Processing</h2>
+
+<p>Before fixing the process, it helps to understand what the broken one is actually costing you.</p>
+
+<div class="stat-box">
+  <div class="stat-num">$58</div>
+  <div>
+    <div class="stat-text">Average cost to process a single expense report manually — including employee time, manager review, and finance processing.</div>
+    <div class="stat-source">Source: Global Business Travel Association (GBTA)</div>
+  </div>
+</div>
+
+<div class="stat-box">
+  <div class="stat-num">19%</div>
+  <div>
+    <div class="stat-text">Of expense reports submitted manually contain at least one error — wrong amounts, missing receipts, or incorrect category codes.</div>
+    <div class="stat-source">Source: SAP Concur Research</div>
+  </div>
+</div>
+
+<div class="stat-box">
+  <div class="stat-num">21 days</div>
+  <div>
+    <div class="stat-text">Average reimbursement wait time for employees at companies without an automated system. Employees at automated companies wait 3–5 days.</div>
+    <div class="stat-source">Source: Aberdeen Group</div>
+  </div>
+</div>
+
+<p>These numbers add up fast. A 50-person company where each employee submits just two expense reports a year is processing 100 reports — at $58 each, that's <strong>$5,800 in hidden administrative cost</strong> before anyone touches payroll.</p>
+
+<h2>The 5 Components of a Good Reimbursement Process</h2>
+
+<h3>1. A clear expense policy</h3>
+<p>Before you can approve or reject expenses, employees need to know what's allowed. A good expense policy covers:</p>
+<ul>
+  <li>Which expense categories are reimbursable (travel, meals, software, etc.)</li>
+  <li>Per-category limits (e.g., meals capped at $75 per person)</li>
+  <li>Receipt requirements (required for expenses over $25)</li>
+  <li>Submission deadline (within 30 days of the expense)</li>
+  <li>Approval chain (who approves what)</li>
+</ul>
+<p>Keep the policy short. A two-page document people actually read is better than a twenty-page document nobody opens.</p>
+
+<h3>2. Receipt collection</h3>
+<p>The most friction in any reimbursement process is receipts. Employees lose them. Finance chases them. Reports get delayed for weeks over a $12 lunch receipt.</p>
+
+<div class="callout">
+  <p><strong>Best practice:</strong> Ask employees to photograph receipts immediately after the expense — before they leave the restaurant or close the browser. A photo of a receipt taken in the moment is infinitely better than a frantic search three weeks later.</p>
+</div>
+
+<p>Modern tools like <a href="https://app.bizapps.app/register">GreenLight</a> let employees upload receipt photos directly to each expense line and use AI to automatically extract the amount, date, and vendor — eliminating most of the manual typing.</p>
+
+<h3>3. Expense categorization and GL codes</h3>
+<p>Every expense should map to a category in your chart of accounts. This matters for two reasons: tax reporting and budget visibility. Common categories include:</p>
+
+<table>
+  <tr><th>Category</th><th>Typical GL code</th><th>Examples</th></tr>
+  <tr><td>Travel</td><td>6200</td><td>Flights, hotels, rental cars</td></tr>
+  <tr><td>Meals &amp; Entertainment</td><td>6201</td><td>Client dinners, team lunches</td></tr>
+  <tr><td>Office Supplies</td><td>6202</td><td>Stationery, printing, equipment</td></tr>
+  <tr><td>Software &amp; Subscriptions</td><td>6203</td><td>SaaS tools, cloud services</td></tr>
+  <tr><td>Professional Development</td><td>6204</td><td>Courses, conferences, books</td></tr>
+</table>
+
+<h3>4. A structured approval workflow</h3>
+<p>One of the most common mistakes small companies make is having no formal approval step — expenses go straight from employee to accounting. This creates two problems:</p>
+<ul>
+  <li>Finance catches policy violations too late (after money is already out)</li>
+  <li>There's no business justification attached to the expense</li>
+</ul>
+<p>A two-step approval process — manager review first, finance sign-off second — catches most errors before they become payments. See our <a href="/articles/approval-workflow.html">guide to building an approval workflow</a> for details.</p>
+
+<h3>5. Fast payment</h3>
+<p>The most overlooked part of reimbursement is the actual paying back. Employees who wait three weeks to be reimbursed for a $500 flight feel undervalued — and they're right to. Aim for:</p>
+<ul>
+  <li><strong>Under 5 business days</strong> from final approval to payment</li>
+  <li>Include reimbursements in the next regular payroll cycle</li>
+  <li>Send a confirmation email when payment is processed</li>
+</ul>
+
+<h2>Manual vs. Automated: What's the Difference?</h2>
+
+<table>
+  <tr><th></th><th>Manual (email + spreadsheet)</th><th>Automated (dedicated tool)</th></tr>
+  <tr><td>Submission</td><td>Employee emails receipts to manager</td><td>Employee uploads via app, AI reads receipt</td></tr>
+  <tr><td>Review time</td><td>2–5 days (email back-and-forth)</td><td>Same day (approval dashboard)</td></tr>
+  <tr><td>Error rate</td><td>~19% of reports</td><td>~3% (validation at submission)</td></tr>
+  <tr><td>Processing cost</td><td>~$58 per report</td><td>~$6–10 per report</td></tr>
+  <tr><td>Reimbursement wait</td><td>14–21 days</td><td>3–5 days</td></tr>
+  <tr><td>Audit trail</td><td>Email threads (fragile)</td><td>Immutable activity log</td></tr>
+  <tr><td>Accounting export</td><td>Manual re-entry</td><td>One-click CSV or QuickBooks push</td></tr>
+</table>
+
+<h2>Common Mistakes to Avoid</h2>
+
+<h3>No receipt threshold</h3>
+<p>Requiring receipts for every $3 coffee creates friction without meaningfully reducing fraud. Set a threshold ($25 is common) below which no receipt is required.</p>
+
+<h3>Approval chains that are too long</h3>
+<p>A $50 cab ride shouldn't need sign-off from three people. Match the approval chain to the dollar amount. Small expenses: manager only. Large expenses: manager + finance director.</p>
+
+<h3>Late submission deadlines</h3>
+<p>Allowing employees to submit expenses from six months ago creates accounting headaches. A 30-day submission window is standard — 60 days for travel-heavy roles.</p>
+
+<h3>No feedback on rejections</h3>
+<p>If finance rejects an expense with no explanation, employees don't know what to fix. Always require a reason for rejection. Better yet, build it into your workflow tool so the reason is mandatory.</p>
+
+<h2>Getting Started</h2>
+<p>If you're still processing expenses by email and spreadsheet, the good news is that switching to a structured system is simpler than it sounds. Most teams are up and running in under an hour:</p>
+<ol>
+  <li>Set up your expense categories and GL codes</li>
+  <li>Add your team members and assign roles (employee, approver, finance)</li>
+  <li>Employees start submitting — the system guides them through each step</li>
+  <li>Approvers review in a dashboard instead of an inbox</li>
+  <li>Finance exports to accounting with one click</li>
+</ol>
+
+<div class="cta-box">
+  <h3>Try GreenLight free for 60 days</h3>
+  <p>No credit card required. Set up in minutes. Your team can submit their first expense report today.</p>
+  <a href="https://app.bizapps.app/register" class="cta-btn">Start Free Trial →</a>
+</div>
+
+<p style="font-size:13px;color:#9ca3af;margin-top:32px">Statistics sourced from GBTA Foundation, SAP Concur Research, and Aberdeen Group expense management studies. All figures reflect industry averages for SMBs with 10–500 employees.</p>
+
+</article>
+
+<footer>
+  <a href="/" style="color:#fff;font-weight:700;text-decoration:none;font-size:16px">BizApps</a>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/articles.html">Resources</a><a href="/guide.html">User Guide</a>
+    <a href="https://app.bizapps.app/privacy">Privacy</a><a href="https://app.bizapps.app/terms">Terms</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 BizApps. All rights reserved.</div>
+</footer>
+</body>
+</html>
