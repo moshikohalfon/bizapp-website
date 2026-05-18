@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Learn how to build an expense approval workflow that's fast, fair, and error-free. Two-step approval process explained with real examples and best practices.">
+  <title>How to Build an Expense Approval Workflow That Works | BizApps</title>
+  <link rel="canonical" href="https://bizapps.app/articles/approval-workflow.html">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Manrope',sans-serif;color:#1f2937;background:#fff;line-height:1.7}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(1,10,52,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+    .nav-inner{max-width:1160px;margin:0 auto;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between}
+    .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .wordmark{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.02em}
+    .wordmark span{color:#60a5fa;font-weight:300}
+    .nav-links{display:flex;align-items:center;gap:28px;list-style:none}
+    .nav-links a{color:rgba(255,255,255,.65);text-decoration:none;font-size:14px;font-weight:500}
+    .nav-links a:hover{color:#fff}
+    .nav-cta{background:#0243ac;color:#fff!important;padding:8px 20px;border-radius:8px;font-weight:700!important}
+    .hero{background:#f8fafc;padding:100px 32px 56px;border-bottom:1px solid #e5e7eb}
+    .hero-inner{max-width:720px;margin:0 auto}
+    .badge{background:#dcfce7;color:#15803d;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 12px;border-radius:20px;display:inline-block;margin-bottom:20px}
+    .hero h1{font-size:clamp(26px,4vw,42px);font-weight:800;color:#010a34;letter-spacing:-.02em;line-height:1.2;margin-bottom:16px}
+    .hero-meta{font-size:14px;color:#6b7280;display:flex;gap:20px;flex-wrap:wrap}
+    article{max-width:720px;margin:0 auto;padding:56px 32px 80px}
+    h2{font-size:22px;font-weight:800;color:#010a34;letter-spacing:-.01em;margin:40px 0 12px}
+    h3{font-size:17px;font-weight:700;color:#010a34;margin:28px 0 8px}
+    p{font-size:16px;color:#374151;margin-bottom:16px;line-height:1.75}
+    ul,ol{padding-left:24px;margin-bottom:16px}
+    li{font-size:16px;color:#374151;margin-bottom:8px;line-height:1.6}
+    .stat-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:20px 24px;margin:24px 0;display:flex;align-items:flex-start;gap:16px}
+    .stat-num{font-size:36px;font-weight:800;color:#0243ac;letter-spacing:-.02em;flex-shrink:0;min-width:80px}
+    .stat-text{font-size:14px;color:#1e40af;line-height:1.5}
+    .stat-source{font-size:11px;color:#93c5fd;margin-top:4px}
+    .callout{background:#fefce8;border-left:4px solid #eab308;border-radius:0 8px 8px 0;padding:16px 20px;margin:24px 0}
+    .callout p{color:#713f12;margin:0;font-size:15px}
+    .callout-green{background:#f0fdf4;border-left:4px solid #22c55e}
+    .callout-green p{color:#166534}
+    .flow{background:#f8fafc;border:1px solid #e5e7eb;border-radius:12px;padding:24px;margin:24px 0}
+    .flow-step{display:flex;align-items:flex-start;gap:16px;padding:12px 0;border-bottom:1px solid #e5e7eb}
+    .flow-step:last-child{border-bottom:none;padding-bottom:0}
+    .flow-num{width:32px;height:32px;border-radius:50%;background:#0243ac;color:#fff;font-weight:800;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .flow-title{font-weight:700;font-size:15px;color:#010a34;margin-bottom:2px}
+    .flow-desc{font-size:13px;color:#6b7280}
+    .flow-arrow{text-align:center;color:#0243ac;font-size:18px;padding:4px 0}
+    .cta-box{background:linear-gradient(135deg,#010a34,#0243ac);border-radius:14px;padding:32px;text-align:center;margin:48px 0}
+    .cta-box h3{color:#fff;font-size:20px;margin-bottom:8px;margin-top:0}
+    .cta-box p{color:rgba(255,255,255,.7);margin-bottom:20px}
+    .cta-btn{background:#22c55e;color:#fff;padding:12px 28px;border-radius:8px;font-weight:700;text-decoration:none;display:inline-block;font-size:15px}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+    .compare-card{border-radius:10px;padding:20px}
+    .compare-bad{background:#fef2f2;border:1px solid #fecaca}
+    .compare-good{background:#f0fdf4;border:1px solid #bbf7d0}
+    .compare-title{font-weight:800;font-size:14px;margin-bottom:10px}
+    .compare-bad .compare-title{color:#b91c1c}
+    .compare-good .compare-title{color:#15803d}
+    .compare-card ul{padding-left:18px}
+    .compare-card li{font-size:13px;color:#374151;margin-bottom:6px}
+    footer{background:#000818;padding:40px 32px;border-top:1px solid rgba(255,255,255,.06);text-align:center}
+    .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+    .footer-links a{font-size:13px;color:rgba(255,255,255,.4);text-decoration:none}
+    .footer-copy{font-size:13px;color:rgba(255,255,255,.3);margin-top:16px}
+    @media(max-width:640px){nav .nav-links{display:none}article{padding:40px 20px 60px}.hero{padding:88px 20px 40px}.compare{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">
+      <svg width="32" height="32" viewBox="0 0 160 160" fill="none"><rect width="160" height="160" rx="28" fill="#1e293b"/><path d="M52 45 L32 80 L52 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M108 45 L128 80 L108 115" stroke="#22c55e" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="80" cy="80" r="22" fill="#22c55e"/></svg>
+      <div class="wordmark">Biz<span>Apps</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/articles.html">Resources</a></li>
+      <li><a href="/guide.html">User Guide</a></li>
+      <li><a href="https://app.bizapps.app/login">Sign In</a></li>
+      <li><a href="https://app.bizapps.app/register" class="nav-cta">Start Free Trial</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="badge">Best Practices</div>
+    <h1>How to Build an Expense Approval Workflow That Actually Works</h1>
+    <div class="hero-meta">
+      <span><i class="bi bi-clock me-1"></i> 5 min read</span>
+      <span><i class="bi bi-calendar3 me-1"></i> Updated May 2026</span>
+      <span><i class="bi bi-people me-1"></i> For finance teams &amp; managers</span>
+    </div>
+  </div>
+</div>
+
+<article>
+
+<p>Most small companies handle expense approvals one of two ways: either there's no process at all (employees submit receipts and get paid, no questions asked), or there's a bureaucratic gauntlet that takes two weeks and three email threads to complete.</p>
+
+<p>Neither works. The first invites abuse and accounting errors. The second frustrates employees and burns manager time. This guide explains how to build a middle ground — a workflow that's thorough enough to catch problems and fast enough that people actually use it.</p>
+
+<h2>Why Most Approval Processes Fail</h2>
+
+<div class="stat-box">
+  <div class="stat-num">62%</div>
+  <div>
+    <div class="stat-text">Of finance managers say their biggest challenge with expense management is lack of visibility into spending before it's approved.</div>
+    <div class="stat-source">Source: Certify Expense Management Survey</div>
+  </div>
+</div>
+
+<div class="stat-box">
+  <div class="stat-num">5.5 hrs</div>
+  <div>
+    <div class="stat-text">Average hours per week a finance team member spends chasing missing receipts, fixing errors, and following up on approvals.</div>
+    <div class="stat-source">Source: Aberdeen Group</div>
+  </div>
+</div>
+
+<p>The root cause in both cases is the same: <strong>no structured process</strong>. When approvals happen over email, things get lost. When there are no clear roles, nobody knows who's responsible. When there's no audit trail, there's no accountability.</p>
+
+<h2>The Two-Step Approval Model</h2>
+
+<p>The most effective pattern for companies with 10–200 employees is a two-step approval workflow:</p>
+
+<div class="flow">
+  <div class="flow-step">
+    <div class="flow-num">1</div>
+    <div>
+      <div class="flow-title">Employee submits</div>
+      <div class="flow-desc">Creates a report, adds expense lines with receipts and descriptions, and submits. The T&amp;E approver is notified immediately.</div>
+    </div>
+  </div>
+  <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+  <div class="flow-step">
+    <div class="flow-num">2</div>
+    <div>
+      <div class="flow-title">T&amp;E Approver reviews (manager)</div>
+      <div class="flow-desc">Checks policy compliance — were expenses legitimate? Within limits? Properly documented? Approves or rejects with a comment. Finance is notified.</div>
+    </div>
+  </div>
+  <div class="flow-arrow"><i class="bi bi-arrow-down"></i></div>
+  <div class="flow-step">
+    <div class="flow-num">3</div>
+    <div>
+      <div class="flow-title">Finance approves (accountant)</div>
+      <div class="flow-desc">Final sign-off. Checks categorization, GL codes, and total amounts. Approves and exports to accounting. Employee gets a confirmation email.</div>
+    </div>
+  </div>
+</div>
+
+<p>This separation matters. The manager knows the business context ("was this client dinner legitimate?"). Finance knows the accounting rules ("is this categorized correctly?"). Neither should be doing the other's job.</p>
+
+<h2>Roles and Responsibilities</h2>
+
+<h3>Employee (submitter)</h3>
+<p>Responsible for: submitting expenses within the deadline, attaching receipts, providing clear descriptions, and responding to rejection feedback.</p>
+
+<h3>T&amp;E Approver (direct manager)</h3>
+<p>Responsible for: verifying business purpose, checking policy compliance, and approving within 48 hours. Should reject with a reason if anything is unclear — not silently let things slide.</p>
+
+<h3>Finance / Accountant</h3>
+<p>Responsible for: final categorization review, GL code verification, and export to accounting. Should not be the first person to catch policy violations — that's the manager's job.</p>
+
+<div class="callout">
+  <p><strong>Common mistake:</strong> Giving Finance the role of both policy enforcer and bookkeeper. It overloads your accounting team and creates bottlenecks. Let managers handle the "should this expense be approved at all?" question.</p>
+</div>
+
+<h2>What Good vs. Bad Looks Like</h2>
+
+<div class="compare">
+  <div class="compare-card compare-bad">
+    <div class="compare-title">❌ Broken workflow</div>
+    <ul>
+      <li>Expenses submitted by email to manager</li>
+      <li>Manager forwards to accounting@company.com</li>
+      <li>No receipt requirement stated anywhere</li>
+      <li>Approval communicated by "sounds good" reply</li>
+      <li>Reimbursement happens "whenever"</li>
+      <li>No audit trail if something is disputed</li>
+    </ul>
+  </div>
+  <div class="compare-card compare-good">
+    <div class="compare-title">✅ Working workflow</div>
+    <ul>
+      <li>Employee submits via app with receipts attached</li>
+      <li>Manager notified instantly, reviews in dashboard</li>
+      <li>Required fields enforced at submission</li>
+      <li>Approval recorded with timestamp and name</li>
+      <li>Reimbursement within 5 business days</li>
+      <li>Full audit log on every report</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Setting Approval Limits by Amount</h2>
+
+<p>Not every expense needs the same level of scrutiny. A practical tiered approach:</p>
+
+<ul>
+  <li><strong>Under $50:</strong> Manager approval only — finance skip</li>
+  <li><strong>$50–$500:</strong> Standard two-step (manager + finance)</li>
+  <li><strong>Over $500:</strong> Two-step + senior manager or CFO notification</li>
+  <li><strong>Over $2,000:</strong> Pre-approval required before the expense is made</li>
+</ul>
+
+<div class="callout callout-green">
+  <p><strong>Tip:</strong> Pre-approval for large expenses is the single biggest lever for controlling spend. It's much easier to say "this isn't in budget" before someone books a $3,000 flight than after.</p>
+</div>
+
+<h2>How Long Should Approval Take?</h2>
+
+<div class="stat-box">
+  <div class="stat-num">48 hrs</div>
+  <div>
+    <div class="stat-text">SLA target for each approval step. If a manager hasn't reviewed within 48 hours, the system should send a reminder — not wait silently.</div>
+    <div class="stat-source">Industry standard for high-performing finance teams</div>
+  </div>
+</div>
+
+<p>Set an explicit SLA and communicate it. "Managers must approve or reject within 2 business days" is a reasonable standard. Include it in your expense policy so there are no surprises.</p>
+
+<h2>What to Do When Things Go Wrong</h2>
+
+<h3>Employee submits the wrong amount</h3>
+<p>Reject the report with a clear reason. Don't edit it yourself — the employee needs to own the correction. A good system lets them reopen the report, fix it, and resubmit.</p>
+
+<h3>Missing receipt</h3>
+<p>Reject and ask for the receipt. If it's genuinely lost (a common claim for small amounts), require a signed declaration instead. Don't approve expenses without documentation — it creates precedent.</p>
+
+<h3>Policy violation</h3>
+<p>Reject immediately at the manager level with a reference to the specific policy clause. Don't let it get to Finance. If the same employee keeps violating policy, that's a conversation for HR, not accounting.</p>
+
+<h2>Building This Without Software</h2>
+<p>You can run a basic two-step workflow with email and a shared spreadsheet. Here's the minimum viable setup:</p>
+<ol>
+  <li>Create an expense submission form (Google Form works)</li>
+  <li>Responses go to a shared sheet (manager + finance both have access)</li>
+  <li>Manager marks each row "Approved" or "Rejected" with a comment</li>
+  <li>Finance marks approved rows "Paid" when reimbursed</li>
+</ol>
+<p>It's clunky but it's a real process. The problem: there's no receipt storage, no notifications, no audit trail, and it breaks down above ~10 employees.</p>
+
+<h2>When It's Time to Automate</h2>
+<p>The inflection point is usually around 10–15 employees, or when your finance person starts spending more than 2 hours a week on expense management. Signs you've hit the limit of manual:</p>
+<ul>
+  <li>You've had an expense submitted twice and paid out twice</li>
+  <li>Someone is chasing receipts every week</li>
+  <li>Employees are complaining about slow reimbursements</li>
+  <li>You have no idea what your company spent on travel last month</li>
+</ul>
+
+<div class="cta-box">
+  <h3>GreenLight handles all of this automatically</h3>
+  <p>Two-step approval workflow, AI receipt scanning, QuickBooks export, and a full audit trail. Set up in under an hour.</p>
+  <a href="https://app.bizapps.app/register" class="cta-btn">Try free for 60 days →</a>
+</div>
+
+<p>Also read: <a href="/articles/expense-reimbursement-guide.html">The Complete Guide to Employee Expense Reimbursement →</a></p>
+
+<p style="font-size:13px;color:#9ca3af;margin-top:32px">Statistics sourced from Certify Expense Management Survey, Aberdeen Group, and GBTA Foundation research on SMB expense management.</p>
+
+</article>
+
+<footer>
+  <a href="/" style="color:#fff;font-weight:700;text-decoration:none;font-size:16px">BizApps</a>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/articles.html">Resources</a><a href="/guide.html">User Guide</a>
+    <a href="https://app.bizapps.app/privacy">Privacy</a><a href="https://app.bizapps.app/terms">Terms</a>
+  </div>
+  <div class="footer-copy">&copy; 2026 BizApps. All rights reserved.</div>
+</footer>
+</body>
+</html>
