@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Expense Reimbursement Software for Small Business — GreenLight by BizApps</title>
+  <meta name="description" content="GreenLight automates employee expense reimbursement for small and mid-size businesses. Submit receipts, approve expenses, and export to QuickBooks — all in one place. Free 60-day trial.">
+  <meta name="keywords" content="expense reimbursement software, employee expense management, small business expense tracking, expense approval workflow">
+  <link rel="canonical" href="https://bizapps.app/expense-reimbursement-software">
+  <link rel="icon" type="image/svg+xml" href="https://bizapps.app/static/favicon.svg">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "GreenLight",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "4.50",
+      "priceCurrency": "USD",
+      "description": "Per user per month"
+    },
+    "description": "Expense reimbursement and approval workflow software for small and mid-size businesses.",
+    "url": "https://bizapps.app",
+    "publisher": {
+      "@type": "Organization",
+      "name": "BizApps",
+      "url": "https://bizapps.app"
+    },
+    "featureList": [
+      "Receipt OCR scanning",
+      "Multi-level approval workflow",
+      "QuickBooks export",
+      "Multi-currency support",
+      "Duplicate expense detection"
+    ]
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Manrope', sans-serif; color: #010a34; margin: 0; }
+    :root {
+      --navy: #010a34;
+      --blue: #0243ac;
+      --blue-lt: #208bfa;
+      --green: #22c55e;
+    }
+    .hero {
+      background: linear-gradient(135deg, #010a34 0%, #0243ac 100%);
+      color: #fff;
+      padding: 80px 20px 60px;
+      text-align: center;
+    }
+    .hero h1 { font-size: clamp(28px, 5vw, 52px); font-weight: 800; margin-bottom: 20px; line-height: 1.15; }
+    .hero p { font-size: 18px; opacity: .85; max-width: 620px; margin: 0 auto 32px; }
+    .btn-cta {
+      background: var(--green); color: #fff; font-weight: 700; font-size: 16px;
+      padding: 14px 36px; border-radius: 10px; text-decoration: none; display: inline-block;
+      transition: opacity .2s;
+    }
+    .btn-cta:hover { opacity: .9; color: #fff; }
+    .btn-secondary {
+      background: rgba(255,255,255,.15); color: #fff; font-weight: 600; font-size: 15px;
+      padding: 14px 28px; border-radius: 10px; text-decoration: none; display: inline-block;
+      margin-left: 12px; border: 1.5px solid rgba(255,255,255,.3);
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.25); color: #fff; }
+    .section { padding: 64px 20px; }
+    .section-gray { background: #f3f4f6; }
+    .feature-card {
+      background: #fff; border-radius: 14px; padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06); height: 100%;
+    }
+    .feature-icon { font-size: 32px; margin-bottom: 14px; }
+    .feature-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .feature-card p { font-size: 14px; color: #555; line-height: 1.6; margin: 0; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 50%; background: var(--blue);
+      color: #fff; font-weight: 800; font-size: 18px;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .pricing-card {
+      background: #fff; border-radius: 16px; padding: 40px 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08); text-align: center; max-width: 400px; margin: 0 auto;
+    }
+    .price-num { font-size: 52px; font-weight: 800; color: var(--blue); }
+    .price-unit { font-size: 16px; color: #888; margin-top: -8px; }
+    .check-list { list-style: none; padding: 0; text-align: left; margin: 24px 0; }
+    .check-list li { padding: 8px 0; font-size: 15px; border-bottom: 1px solid #f0f0f0; }
+    .check-list li:last-child { border: none; }
+    .check-list li::before { content: "✓ "; color: var(--green); font-weight: 700; }
+    .faq-item { border-bottom: 1px solid #e5e7eb; padding: 20px 0; }
+    .faq-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .faq-item p { font-size: 14px; color: #555; margin: 0; line-height: 1.6; }
+    nav.topnav {
+      background: var(--navy); padding: 16px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    nav.topnav .logo { color: #fff; font-weight: 800; font-size: 20px; text-decoration: none; }
+    nav.topnav .logo span { color: var(--green); }
+    .footer { background: var(--navy); color: rgba(255,255,255,.6); text-align: center; padding: 32px 20px; font-size: 13px; }
+    .footer a { color: rgba(255,255,255,.6); text-decoration: none; margin: 0 10px; }
+  </style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="https://bizapps.app" class="logo">Green<span>Light</span> <span style="font-size:11px;font-weight:400;opacity:.6">by BizApps</span></a>
+  <div>
+    <a href="https://bizapps.app/login" style="color:rgba(255,255,255,.8);text-decoration:none;margin-right:20px;font-size:14px">Sign in</a>
+    <a href="https://bizapps.app/register" class="btn-cta" style="padding:10px 20px;font-size:14px">Start free trial</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <h1>Expense Reimbursement Software<br>Built for Small Business</h1>
+  <p>Stop chasing receipts over email. GreenLight gives your team a simple way to submit expenses and your managers a fast way to approve them.</p>
+  <a href="https://bizapps.app/register" class="btn-cta">Start free 60-day trial</a>
+  <a href="https://bizapps.app/login" class="btn-secondary">Sign in</a>
+  <p style="margin-top:20px;font-size:13px;opacity:.6">No credit card required · Setup in 5 minutes</p>
+</section>
+
+<!-- Pain points -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center fw-800 mb-2" style="font-size:32px;font-weight:800">Does this sound familiar?</h2>
+    <p class="text-center text-muted mb-5">Most small businesses manage expenses the hard way.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">📧</div>
+          <h3>Receipts lost in email</h3>
+          <p>Employees email photos of receipts. Finance spends hours tracking them down every month.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3>Spreadsheets break down</h3>
+          <p>Shared Google Sheets work until they don't. No approval trail, no audit log, no control.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">💸</div>
+          <h3>Reimbursements take weeks</h3>
+          <p>Employees wait. Finance is bottlenecked. Nobody knows where a report is in the process.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section section-gray">
+  <div class="container">
+    <h2 class="text-center fw-800 mb-2" style="font-size:32px;font-weight:800">Everything you need, nothing you don't</h2>
+    <p class="text-center text-muted mb-5">GreenLight replaces the email + spreadsheet mess with one clean workflow.</p>
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">📷</div>
+          <h3>Receipt OCR scanning</h3>
+          <p>Employees snap a photo of their receipt. GreenLight reads the amount, date, and merchant automatically using AI.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">✅</div>
+          <h3>Two-level approval workflow</h3>
+          <p>T&E manager reviews first, then finance approves. Every decision is logged with a timestamp and audit trail.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3>QuickBooks export</h3>
+          <p>Approved reports sync to QuickBooks Online with one click. No re-entering data, no manual journal entries.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">🌍</div>
+          <h3>Multi-currency support</h3>
+          <p>Employees travel internationally? GreenLight auto-converts foreign receipts to USD using live exchange rates.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">🔍</div>
+          <h3>Duplicate detection</h3>
+          <p>Automatically flags expenses that look like duplicates — same amount, date, and merchant — before they get approved.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Multi-tenant, multi-department</h3>
+          <p>Manage expenses across departments with different approval chains. Each team sees only their own data.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How it works -->
+<section class="section">
+  <div class="container">
+    <h2 class="text-center fw-800 mb-5" style="font-size:32px;font-weight:800">How it works</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-3">
+        <div class="step-num">1</div>
+        <h4 style="font-weight:700">Employee submits</h4>
+        <p class="text-muted" style="font-size:14px">Upload receipt, fill in details, submit report. Takes 2 minutes.</p>
+      </div>
+      <div class="col-md-3">
+        <div class="step-num">2</div>
+        <h4 style="font-weight:700">Manager reviews</h4>
+        <p class="text-muted" style="font-size:14px">T&E approver gets notified by email, approves or rejects with a note.</p>
+      </div>
+      <div class="col-md-3">
+        <div class="step-num">3</div>
+        <h4 style="font-weight:700">Finance approves</h4>
+        <p class="text-muted" style="font-size:14px">Accountant does final review and marks for reimbursement.</p>
+      </div>
+      <div class="col-md-3">
+        <div class="step-num">4</div>
+        <h4 style="font-weight:700">Export to QuickBooks</h4>
+        <p class="text-muted" style="font-size:14px">One click exports approved expenses to QuickBooks Online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Pricing -->
+<section class="section section-gray">
+  <div class="container">
+    <h2 class="text-center fw-800 mb-2" style="font-size:32px;font-weight:800">Simple, transparent pricing</h2>
+    <p class="text-center text-muted mb-5">One plan. Everything included. No hidden fees.</p>
+    <div class="pricing-card">
+      <div class="price-num">$4.50</div>
+      <div class="price-unit">per active user / month</div>
+      <ul class="check-list mt-4">
+        <li>Unlimited expense reports</li>
+        <li>Receipt OCR scanning (AI-powered)</li>
+        <li>Two-level approval workflow</li>
+        <li>QuickBooks Online export</li>
+        <li>Multi-currency with live rates</li>
+        <li>Duplicate expense detection</li>
+        <li>Audit log & activity trail</li>
+        <li>Email notifications</li>
+        <li>60-day free trial — no card needed</li>
+      </ul>
+      <a href="https://bizapps.app/register" class="btn-cta" style="display:block;text-align:center;padding:16px">Start free 60-day trial</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="container" style="max-width:700px">
+    <h2 class="text-center fw-800 mb-5" style="font-size:32px;font-weight:800">Frequently asked questions</h2>
+
+    <div class="faq-item">
+      <h4>How long is the free trial?</h4>
+      <p>60 days, no credit card required. You get full access to all features during the trial.</p>
+    </div>
+    <div class="faq-item">
+      <h4>What is an "active user"?</h4>
+      <p>An active user is any employee who submits at least one expense in a billing month. Admins and approvers who don't submit expenses are not counted.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Does GreenLight work with QuickBooks?</h4>
+      <p>Yes. Approved expense reports can be exported to QuickBooks Online with one click, with GL account mapping per expense category.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Can employees submit expenses in foreign currencies?</h4>
+      <p>Yes. GreenLight supports 20+ currencies and converts them to USD automatically using live exchange rates when an expense is submitted.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Is my data secure?</h4>
+      <p>All data is stored on AWS in the US. Receipts are stored in S3 with private access only. All connections use HTTPS/TLS. Each company's data is fully isolated from other accounts.</p>
+    </div>
+    <div class="faq-item">
+      <h4>How many employees can I have?</h4>
+      <p>No limit on the number of employees. You only pay for users who submit expenses in a given month.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:linear-gradient(135deg,#010a34 0%,#0243ac 100%);padding:64px 20px;text-align:center;color:#fff">
+  <h2 style="font-size:32px;font-weight:800;margin-bottom:16px">Ready to simplify expense reimbursement?</h2>
+  <p style="font-size:17px;opacity:.85;margin-bottom:32px">Join small businesses already using GreenLight. Free for 60 days.</p>
+  <a href="https://bizapps.app/register" class="btn-cta">Start free trial — no card needed</a>
+</section>
+
+<footer class="footer">
+  <p>© 2026 BizApps · <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Service</a> · <a href="https://bizapps.app/login">Sign In</a></p>
+</footer>
+
+</body>
+</html>
